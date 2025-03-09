@@ -9,7 +9,7 @@
 <body>
     
     <!-- Header Section Start -->
-    <header class="bg-transparent fixed top-0 left-0 w-full flex items-center z-10 h-20">
+    <header class="bg-white fixed top-0 left-0 w-full flex items-center z-10 h-20">
         <div class="container mx-auto flex justify-between items-center">
             <!-- Logo dan Menu -->
             <div class="px-4 flex items-center space-x-8">
@@ -48,21 +48,32 @@
     </header>
     <!-- Header Section End -->
 
+    <!-- Hero Section Start-->
+    <section id="destination" class="relative w-screen h-screen pt-20">
+        <div class="absolute inset-0">
+            <img src="img/destination2.jpg" alt="Hero Image" class="w-full h-full object-cover">
+        </div>
+        <!-- Tambahkan teks di atas gambar -->
+        <div class="absolute left-0 right-0 bottom-0 top-20 flex items-center justify-center z-10 bg-black bg-opacity-10">
+            <div class="container">
+                <h1 class="font-semibold text-white text-2xl md:text-3xl lg:text-4xl">
+                    Mau berlibur kemana?
+                </h1>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+    
     <!-- Hero Section -->
-<section class="relative w-full h-[400px] flex items-center justify-center">
-    <!-- Gambar Background -->
-    <img src="img/destination2.jpg" alt="Hero Image" class="w-full h-full object-cover">
-
-    <!-- Overlay Gelap -->
-    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-
-    <!-- Teks di Tengah tetapi Sedikit Naik -->
-    <div class="absolute text-center transform -translate-y-1/4">
-        <p class="text-white font-bold text-4xl">
-            Mau berlibur kemana?
-        </p>
-    </div>
-</section>
+    <!-- <section class="relative w-full h-[400px] flex items-center justify-center">
+        <img src="img/destination2.jpg" alt="Hero Image" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="absolute text-center transform -translate-y-1/4">
+            <p class="text-white font-bold text-4xl">
+                Mau berlibur kemana?
+            </p>
+        </div>
+    </section> -->
     <!-- Hero Section End -->
 
     
