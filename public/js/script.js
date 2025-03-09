@@ -1,21 +1,44 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Navigasi antara index.html dan destination.html
-    const destinationLink = document.querySelectorAll('a[href="destination.html"]');
-    const homeLink = document.querySelectorAll('a[href="index.html"]');
+    console.log("✅ Script berhasil dimuat!");
 
-    destinationLink.forEach(link => {
+    // Navigasi antara index.html dan destination.html
+    document.querySelectorAll('a[href="destination.html"]').forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault();
             window.location.href = "destination.html";
         });
     });
 
-    homeLink.forEach(link => {
+    document.querySelectorAll('a[href="index.html"]').forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault();
             window.location.href = "index.html";
         });
     });
+
+    // FORM LOGIN
+    const loginForm = document.getElementById("loginForm");
+    if (loginForm) {
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            console.log("✅ Login berhasil, mengalihkan ke index.html...");
+            window.location.href = "index.html"; // Arahkan setelah login
+        });
+    } else {
+        console.error("❌ Form login tidak ditemukan!");
+    }
+
+    // FORM REGISTER
+    const registerForm = document.getElementById("registerForm");
+    if (registerForm) {
+        registerForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            console.log("✅ Registrasi berhasil, mengalihkan ke index.html...");
+            window.location.href = "index.html"; // Arahkan setelah daftar
+        });
+    } else {
+        console.error("❌ Form register tidak ditemukan!");
+    }
 
     // Login & Register Page Toggle
     const loginPage = document.getElementById("loginPage");
@@ -40,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 event.preventDefault();
                 loginPage.classList.add("hidden");
                 registerPage.classList.remove("hidden");
-                history.pushState(null, "", "?page=register");
+                history.replaceState(null, "", "?page=register");
             });
         });
 
@@ -48,18 +71,18 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
             registerPage.classList.add("hidden");
             loginPage.classList.remove("hidden");
-            history.pushState(null, "", "?page=login");
+            history.replaceState(null, "", "?page=login");
         });
     } else {
-        console.error("Salah satu elemen navigasi tidak ditemukan!");
+        console.warn("⚠️ Salah satu elemen navigasi tidak ditemukan!");
     }
 
     // Navbar Fixed
     window.onscroll = function () {
         const header = document.querySelector('header');
-        const fixedNav = header.offsetTop;
+        if (!header) return;
 
-        if (window.pageYOffset > fixedNav) {
+        if (window.pageYOffset > header.offsetTop) {
             header.classList.add('navbar-fixed');
         } else {
             header.classList.remove('navbar-fixed');
@@ -78,24 +101,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Responsive Navigation di Destination Section
-    const navLinks = document.querySelectorAll("#destination nav a");
-    const destinationNav = document.querySelector("#destination nav");
-
     function updateNavDisplay() {
+        const navLinks = document.querySelectorAll("#destination nav a");
         if (window.innerWidth < 640) {
-            navLinks.forEach((link, index) => {
-                if (index !== 0) {
-                    link.classList.add("hidden");
-                }
-            });
+            navLinks.forEach((link, index) => index !== 0 && link.classList.add("hidden"));
         } else if (window.innerWidth < 1024) {
-            navLinks.forEach((link, index) => {
-                if (index > 1) {
-                    link.classList.add("hidden");
-                } else {
-                    link.classList.remove("hidden");
-                }
-            });
+            navLinks.forEach((link, index) => index > 1 ? link.classList.add("hidden") : link.classList.remove("hidden"));
         } else {
             navLinks.forEach(link => link.classList.remove("hidden"));
         }
