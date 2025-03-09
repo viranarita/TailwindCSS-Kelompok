@@ -64,3 +64,30 @@ if (hamburger && navMenu) {
         navMenu.classList.toggle('hidden');
     });
 }
+
+// Responsive Navigation di Destination Section
+const navLinks = document.querySelectorAll("#destination nav a");
+const destinationNav = document.querySelector("#destination nav");
+
+function updateNavDisplay() {
+    if (window.innerWidth < 640) {
+        navLinks.forEach((link, index) => {
+            if (index !== 0) { // Sembunyikan semua kecuali "Hotel"
+                link.classList.add("hidden");
+            }
+        });
+    } else if (window.innerWidth < 1024) {
+        navLinks.forEach((link, index) => {
+            if (index > 1) { // Tampilkan "Hotel" dan "Transportation", sisanya sembunyikan
+                link.classList.add("hidden");
+            } else {
+                link.classList.remove("hidden");
+            }
+        });
+    } else {
+        navLinks.forEach(link => link.classList.remove("hidden")); // Tampilkan semua di layar besar
+    }
+}
+
+window.addEventListener("resize", updateNavDisplay);
+document.addEventListener("DOMContentLoaded", updateNavDisplay);
